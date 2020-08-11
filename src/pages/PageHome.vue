@@ -13,6 +13,7 @@ import ThreadList from '@/components/ThreadList'
 console.log(sourceData)
 
 export default {
+  name: 'PageHome',
   components: {
     ThreadList
   },
