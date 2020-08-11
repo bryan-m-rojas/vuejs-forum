@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <div class="container">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
@@ -14,5 +13,5 @@ export default {
 </script>
 
 <style>
-@import "assets/css/style.css";
+@import 'assets/css/style.css'
 </style>
