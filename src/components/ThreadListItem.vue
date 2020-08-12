@@ -14,7 +14,9 @@
     </div>
 
     <div class="activity">
-      <p class="replies-count">{{repliesCount}} replies</p>
+      <p class="replies-count">
+        {{repliesCount}} replies
+      </p>
 
       <!-- <img
         class="avatar-medium"
@@ -33,23 +35,23 @@
 </template>
 
 <script>
-import sourceData from '@/data'
-export default {
-  props: {
-    thread: {
-      required: true,
-      type: Object
-    }
-  },
-
-  computed: {
-    repliesCount () {
-      return Object.keys(this.thread.posts).length - 1
+  import sourceData from '@/data'
+  export default {
+    props: {
+      thread: {
+        required: true,
+        type: Object
+      }
     },
 
-    user () {
-      return sourceData.users[this.thread.userId]
+    computed: {
+      repliesCount () {
+        return Object.keys(this.thread.posts).length - 1
+      },
+
+      user () {
+        return sourceData.users[this.thread.userId]
+      }
     }
   }
-}
 </script>
