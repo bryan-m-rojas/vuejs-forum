@@ -15,20 +15,20 @@
 </template>
 
 <script>
-export default {
-  name: 'PageNotFound'
-}
+  export default {
+    name: 'PageNotFound'
+  }
 </script>
 
 <style module>
-    .headingLarge {
-        font-size: 100px;
-    }
-    .textLarge {
-        font-size: 50px;
-        font-weight: 100;
-    }
-    .centered {
-        text-align: center;
-    }
+  .headingLarge {
+    font-size: 100px;
+  }
+  .textLarge {
+    font-size: 50px;
+    font-weight: 100;
+  }
+  .centered {
+    text-align: center;
+  }
 </style>
