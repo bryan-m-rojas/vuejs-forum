@@ -44,9 +44,8 @@
     },
 
     methods: {
-      addPost (eventData) {
-        const postId = eventData.post['key']
-        const post = eventData.post
+      addPost ({post}) {
+        const postId = post['.key']
 
         // $set params ->  Object we want to add new property to/ name of property/ value
         this.$set(sourceData.posts, postId, post)
