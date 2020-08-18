@@ -23,6 +23,8 @@
 
 <script>
   export default {
+    name: 'ForumListItem',
+
     props: {
       forum: {
         required: true,
@@ -33,7 +35,7 @@
     computed: {
       threadsCount () {
         return this.forum.threads
-        ? Object.values(this.forum.threads)
+        ? Object.values(this.forum.threads).length
         : 0
       }
     }

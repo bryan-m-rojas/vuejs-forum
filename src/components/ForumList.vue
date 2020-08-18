@@ -1,9 +1,5 @@
 <template>
-  <div class="forum-list">
-    <h2 class="list-title">
-      <a href="#">Feedback &amp; Information</a>
-    </h2>
-
+  <div>
     <ForumListItem
       v-for="forum in forums"
       :forum="forum"
@@ -15,11 +11,13 @@
 <script>
   import ForumListItem from '@/components/ForumListItem'
   export default {
+    name: 'ForumList',
+
+    components: {
+      ForumListItem
+    },
+
     props: {
-      components: {
-        ForumListItem
-      },
-    
       forums: {
         required: true,
         type: Array
