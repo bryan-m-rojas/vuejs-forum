@@ -20,18 +20,14 @@
       </div>
     </div>
 
-    <div 
-      class="post-date text-faded"
-      :title="post.publishedAt | humanFriendlyDate"
-    >
-      {{post.publishedAt | diffForHumans}}
+    <div class="post-date text-faded">
+      <AppDate :timestamp="post.publishedAt"/>
     </div>
   </div>
 </template>
 
 <script>
   import sourceData from '@/data'
-  import moment from 'moment'
   export default {
     props: {
       post: {
@@ -47,18 +43,6 @@
 
       userPostsCount () {
         return Object.keys(this.user.posts).length
-      }
-    },
-  
-    // filters are handy for dealing with currency, dates, and
-    // other things that need to be formatted
-    filters: {
-      humanFriendlyDate (date) {
-        return moment.unix(date).format('MMMM Do YYYY, h:mm:ss a')
-      },
-
-      diffForHumans (date) {
-        return moment.unix(date).fromNow()
       }
     }
   }
