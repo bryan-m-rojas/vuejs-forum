@@ -37,7 +37,7 @@ export default new Router({
     },
     {
       path: '/thread/:id',
-      name: 'PageThreadShow',
+      name: 'ThreadShow',
       component: PageThreadShow,
       props: true
     },

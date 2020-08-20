@@ -15,7 +15,7 @@
   import PostList from '@/components/PostList'
   
   export default {
-    name: 'PageThreadShow',
+    name: 'ThreadShow',
     components: {
       PostList,
       PostEditor
