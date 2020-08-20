@@ -1,14 +1,12 @@
 <template>
-  <div class="col-full">
+  <div class="col-full push-top">
     <h1>Welcome to the Forum</h1>
     <CategoryList :categories="categories"/>
   </div>
 </template>
 
 <script>
-  import sourceData from '@/data'
   import CategoryList from '@/components/CategoryList'
-  console.log(sourceData)
 
   export default {
     name: 'PageHome',
@@ -16,9 +14,9 @@
       CategoryList
     },
 
-    data () {
-      return {
-        categories: Object.values(sourceData.categories)
+    computed: {
+      categories () {
+        return Object.values(this.$store.state.categories)
       }
     }
   }
