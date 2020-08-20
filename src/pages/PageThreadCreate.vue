@@ -39,13 +39,13 @@
   export default {
     props: {
       forum: {
-        required: true,
-        type: Object 
+        type: Object,
+        required: true
       }
     },
 
     data () {
-      return{
+      return {
         title: '',
         text: ''
       }
