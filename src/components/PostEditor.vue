@@ -27,7 +27,22 @@
       },
 
       post: {
-        type: Object
+        type: Object,
+        validator: obj => {
+          const keyIsValid = typeof obj['.key'] === 'string'
+          const textIsValid = typeof obj.text === 'string'
+          const valid = keyIsValid && textIsValid
+
+          if (!textIsValid) {
+            console.error('The post prop object must include a `text` attribute.')
+          }
+
+          if (!keyIsValid) {
+            console.error('The post prop object must include a `.key` attribute.')
+          }
+
+          return valid
+        }
       }
     },
 
