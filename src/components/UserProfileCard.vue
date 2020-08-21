@@ -42,24 +42,24 @@
 </template>
 
 <script>
-    export default {
-      props: {
-        user: {
-          required: true,
-          type: Object
-        },
+  export default {
+    props: {
+      user: {
+        required: true,
+        type: Object
+      }
+    },
 
-        userPostsCount: {
-          required: true,
-          type: Number
-        },
+    computed: {
+      userThreadsCount () {
+        return this.$store.getters.userThreadsCount(this.user['.key'])
+      },
 
-        userThreadsCount: {
-          required: true,
-          type: Number
-        }
+      userPostsCount () {
+        return this.$store.getters.userPostsCount(this.user['.key'])
       }
     }
+  }
 </script>
 
 <style scoped>
