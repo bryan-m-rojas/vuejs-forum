@@ -18,6 +18,26 @@
       categories () {
         return Object.values(this.$store.state.categories)
       }
+
+      // beforeCreated () {
+      //   console.log('beforeCreate', this.categories)
+      // },
+
+      // created () {
+      //   console.log('created', this.categories)
+      // },
+
+      // beforeMount () {
+      //   console.log('beforeMount', this.categories)
+      // },
+
+      // mounted () {
+      //   console.log('mounted', this.categories, this.$el.innerText)
+      // },
+
+      // destroyed () {
+      //   console.log('destroyed', this.categories)
+      // }
     }
   }
 </script>
