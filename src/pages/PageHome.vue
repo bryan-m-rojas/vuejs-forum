@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
   import CategoryList from '@/components/CategoryList'
 
   export default {
@@ -18,6 +19,34 @@
       categories () {
         return Object.values(this.$store.state.categories)
       }
+    },
+
+    methods: {
+      ...mapActions(['fetchAllCategories', 'fetchForums'])
+    },
+
+    created () {
+      this.fetchAllCategories()
+        .then(categories => {
+          categories.forEach(category => this.fetchForums({ids: Object.keys(category.forums)}))
+        })
     }
+
+    // created () {
+    //   console.log('created', this.categories)
+    // },
+
+    // beforeMount () {
+    //   console.log('beforeMount', this.categories)
+    // },
+
+    // mounted () {
+    //   console.log('mounted', this.categories, this.$el.innerText)
+    // },
+
+    // destroyed () {
+    //   console.log('destroyed', this.categories)
+    // }
+  
   }
 </script>
