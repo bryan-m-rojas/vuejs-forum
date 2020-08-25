@@ -1,12 +1,14 @@
 'use strict'
+require('dotenv').config()
+
 module.exports = {
-  FIREBASE_NODE_ENV: '"production"',
-  FIREBASE_API_KEY: "'AIzaSyDcp9qXbKh8695-I6wQGlYex-RLNjLuCXU'",
-  FIREBASE_AUTH_DOMAIN: "'vue-master-class-forum.firebaseapp.com'",
-  FIREBASE_DATABASE_URL: "'https://vue-master-class-forum.firebaseio.com'",
-  FIREBASE_PROJECT_ID: "'vue-master-class-forum'",
-  FIREBASE_STORAGE_BUCKET: "'vue-master-class-forum.appspot.com'",
-  FIREBASE_MESSAGING_ID: "'1049376509855'",
-  FIREBASE_APP_ID: "'1:1049376509855:web:abd36980029af558fff7aa'",
-  FIREBASE_MEASUREMENT_ID: "'G-DHTLXS1BS3'"
+  NODE_ENV: '"production"',
+  FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
+  FIREBASE_AUTH_DOMAIN: JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+  FIREBASE_DATABASE_URL: JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+  FIREBASE_PROJECT_ID: JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+  FIREBASE_STORAGE_BUCKET: JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+  FIREBASE_MESSAGING_ID: JSON.stringify(process.env.FIREBASE_MESSAGING_ID),
+  FIREBASE_APP_ID: JSON.stringify(process.env.FIREBASE_APP_ID),
+  FIREBASE_MEASUREMENT_ID: JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID)
 }
