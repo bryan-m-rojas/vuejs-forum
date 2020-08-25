@@ -81,7 +81,7 @@
           return this.fetchPosts({ids: Object.keys(thread.posts)})
         })
         .then(posts => {
-          return Promise.all(posts.maps(post => {
+          return Promise.all(posts.map(post => {
             // fetch user
             this.fetchUser({id: post.userId})
           }))
