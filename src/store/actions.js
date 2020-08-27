@@ -75,7 +75,7 @@ export default {
   registerUserWithEmailAndPassword ({dispatch}, {email, name, username, password, avatar = null}) {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
-        return dispatch('createUser', {id: user.uid, email, name, username, password, avatar})
+        return dispatch('createUser', {id: user.user.uid, email, name, username, password, avatar})
       })
   },
 
