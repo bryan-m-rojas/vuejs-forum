@@ -1,6 +1,7 @@
 <template>
   <div class="flex-grid">
-    <UserProfileCard
+    <h1>My profile</h1>
+    <!-- <UserProfileCard
       v-if="!edit"
       :user="user"
     />
@@ -8,21 +9,21 @@
      <UserProfileCardEditor
       v-else
       :user="user"
-    />
+    /> -->
 
-    <div class="col-7 push-top">
+    <!-- <div class="col-7 push-top"> -->
 
-      <div class="profile-header">
+      <!-- <div class="profile-header">
         <span class="text-lead">
           {{user.username}}'s recent activity
         </span>
         <a href="#">See only started threads?</a>
-      </div>
+      </div> -->
 
-      <hr>
+      <!-- <hr>
 
       <PostList :posts="userPosts"/>
-    </div>
+    </div> -->
   </div> 
 </template>
 
@@ -31,6 +32,7 @@
   import UserProfileCard from '@/components/UserProfileCard'
   import UserProfileCardEditor from '@/components/UserProfileCardEditor'
   import {mapGetters} from 'vuex'
+  import store from '@/store'
 
   export default {
     components: {
@@ -65,6 +67,18 @@
             .filter(post => post.userId === this.user['.key'])
         }
         return []
+      },
+
+      beforeRouteEnter (to, from, next) {
+        if (store.state.authId) {
+          next()
+        } else {
+          next({name: 'Home'})
+        }
+      },
+
+      created () {
+        this.$emit('ready')
       }
     }
   }
