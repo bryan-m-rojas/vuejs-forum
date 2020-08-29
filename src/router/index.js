@@ -75,6 +75,14 @@ export default new Router({
       component: SignIn
     },
     {
+      path: '/logout',
+      name: 'SignOut',
+      beforeEnter (to, from, next) {
+        store.dispatch('signOut')
+          .then(() => next({name: 'Home'}))
+      }
+    },
+    {
       path: '/me/edit',
       name: 'ProfileEdit',
       component: Profile,
