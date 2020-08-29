@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 import Forum from '@/pages/PageForum'
 import Category from '@/pages/PageCategory'
 import PageHome from '@/pages/PageHome'
@@ -54,7 +55,14 @@ export default new Router({
       path: '/me',
       name: 'Profile',
       component: Profile,
-      props: true
+      props: true,
+      beforeEnter (to, from, next) {
+        if (store.state.authId) {
+          next()
+        } else {
+          next({name: 'Home'})
+        }
+      }
     },
     {
       path: '/register',
