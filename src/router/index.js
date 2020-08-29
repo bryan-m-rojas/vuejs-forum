@@ -14,7 +14,7 @@ import PageThreadShow from '@/pages/PageThreadShow'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -56,13 +56,13 @@ export default new Router({
       name: 'Profile',
       component: Profile,
       props: true,
-      beforeEnter (to, from, next) {
-        if (store.state.authId) {
-          next()
-        } else {
-          next({name: 'Home'})
-        }
-      }
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/me/edit',
+      name: 'ProfileEdit',
+      component: Profile,
+      props: {edit: true}
     },
     {
       path: '/register',
@@ -83,12 +83,6 @@ export default new Router({
       }
     },
     {
-      path: '/me/edit',
-      name: 'ProfileEdit',
-      component: Profile,
-      props: {edit: true}
-    },
-    {
       path: '*',
       name: 'NotFound',
       component: PageNotFound
@@ -96,3 +90,19 @@ export default new Router({
   ],
   mode: 'history'
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(`🚦 navigating to ${to.name} from ${from.name}`)
+  if (to.matched.some(route => route.meta.requiresAuth)) {
+    // protected route
+    if (store.state.authId) {
+      next()
+    } else {
+      next({name: 'Home'})
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
