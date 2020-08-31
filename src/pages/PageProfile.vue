@@ -50,29 +50,17 @@
 
     computed: {
       ...mapGetters({
-        user: 'authUser'
+        user: 'auth/authUser'
       }),
 
-      userThreadsCount () {
-        return this.$store.getters.userThreadsCount(this.user['.key'])
-      },
-
-      userPostsCount () {
-        return this.$store.getters.userPostsCount(this.user['.key'])
-      },
-
       userPosts () {
-        if (this.user.posts) {
-          return Object.values(this.$store.state.posts)
-            .filter(post => post.userId === this.user['.key'])
-        }
-        return this.$store.getters.userPosts(this.user['.key'])
-      },
-
-      created () {
-        this.$store.dispatch('fetchPosts', {ids: this.user.posts})
-          .then(() => this.asyncDataStatus_fetched())
+        return this.$store.getters['users/userPosts'](this.user['.key'])
       }
+    },
+
+    created () {
+      this.$store.dispatch('posts/fetchPosts', {ids: this.user.posts})
+        .then(() => this.asyncDataStatus_fetched())
     }
   }
 </script>

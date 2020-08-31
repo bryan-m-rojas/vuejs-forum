@@ -38,7 +38,7 @@ export default {
     registerUserWithEmailAndPassword ({dispatch}, {email, name, username, password, avatar = null}) {
       return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(user => {
-          return dispatch('users/createUser', {id: user.uid, email, name, username, password, avatar}, {root: true})
+          return dispatch('users/createUser', {id: user.user.uid, email, name, username, password, avatar}, {root: true})
         })
         .then(() => dispatch('fetchAuthUser'))
     },
@@ -54,7 +54,7 @@ export default {
           const user = data.user
           firebase.database().ref('users').child(user.uid).once('value', snapshot => {
             if (!snapshot.exists()) {
-              return dispatch('users/createUser', {id: user.uid, name: user.displayName, email: user.email, username: user.email, avatar: user.photoURL}, {root: true})
+              return dispatch('users/createUser', {id: user.user.uid, name: user.displayName, email: user.email, username: user.email, avatar: user.photoURL}, {root: true})
                 .then(() => dispatch('fetchAuthUser'))
             }
           })
