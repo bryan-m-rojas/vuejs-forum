@@ -37,7 +37,7 @@
 
     computed: {
       forum () {
-        return this.$store.state.forums[this.forumId]
+        return this.$store.state.forums.items[this.forumId]
       },
 
       hasUnsavedChanges () {
@@ -46,7 +46,9 @@
     },
 
     methods: {
-      ...mapActions(['createThread', 'fetchForum']),
+      ...mapActions('threads', ['createThread']),
+      ...mapActions('forums', ['fetchForum']),
+
       save ({title, text}) {
         this.createThread({
           forumId: this.forum['.key'],
